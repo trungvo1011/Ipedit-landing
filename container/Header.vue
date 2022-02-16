@@ -240,7 +240,7 @@ export default {
     // scroll
     scrollFunction: function () {
       if (process.client) {
-        if (typeof window !== "undefined") {
+        if (typeof window !== "undefined" && process.browser) {
           this.heightScreen = window.scrollY;
         }
       }
@@ -300,7 +300,7 @@ export default {
       this.activeMenu = false;
       if (process.client) {
         let offset = document.getElementById(type)?.offsetTop;
-        if (typeof window !== "undefined") {
+        if (typeof window !== "undefined" && process.browser) {
           switch (type) {
             case "Work":
               window.scrollTo(0, offset);
@@ -325,7 +325,7 @@ export default {
     },
   },
   created() {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && process.browser) {
       window.addEventListener("scroll", this.scrollFunction);
     }
   },

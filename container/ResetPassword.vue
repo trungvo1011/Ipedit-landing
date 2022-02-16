@@ -145,7 +145,7 @@ export default {
   },
   mounted() {},
   created() {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && process.browser) {
       window.addEventListener("keydown", (evt) => {
         evt = evt || window.event;
         if (evt.keyCode == 27) {

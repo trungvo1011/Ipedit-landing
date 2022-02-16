@@ -212,7 +212,7 @@ export default {
     },
 
     scrollFunction: function () {
-      if (process.client) {
+      if (process.client && process.browser) {
         if (typeof window !== "undefined") {
           if (
             window.scrollY >
@@ -248,7 +248,7 @@ export default {
     if (this.width < 1000 && this.width > 1400) {
       this.animate = false;
     }
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && process.browser) {
       window.addEventListener("scroll", this.scrollFunction);
       window.addEventListener("resize", this.handleResize);
       this.handleResize();

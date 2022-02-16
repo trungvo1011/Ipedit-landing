@@ -1,5 +1,5 @@
 <template>
-  <div class="hompage-baner" v-on:scroll="scrollFunction">
+  <div class="hompage-baner">
     <div
       class="radio-btns__btn"
       v-for="(item, index) in arrData"
@@ -56,7 +56,7 @@ export default {
   methods: {
     scrollToHeader: function (type) {
       let offset = document.getElementById(type)?.offsetTop;
-      if (typeof window !== "undefined") {
+      if (typeof window !== "undefined" && process.browser) {
         switch (type) {
           case "Work":
             window.scrollTo(0, offset);
@@ -67,16 +67,7 @@ export default {
         }
       }
     },
-    scrollFunction: function () {
-      console.log("a");
-      if (process.client) {
-        if (typeof window !== "undefined") {
-          console.log(window.screenY);
-        }
-      }
-    },
   },
-
   created() {
     var TxtType = function (el, toRotate, period) {
       this.toRotate = toRotate;
@@ -120,7 +111,7 @@ export default {
         that.tick();
       }, delta);
     };
-    if (process.client) {
+    if (typeof window !== "undefined" && process.browser) {
       window.onload = function () {
         var elements = document.getElementsByClassName("typewrite");
         for (var i = 0; i < elements.length; i++) {
